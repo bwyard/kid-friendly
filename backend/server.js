@@ -65,6 +65,19 @@ venueRoutes.route('/update/:id').post(function(req,res){
     });
 });
 
+venueRoutes.route('/delete/:id').post(function(req,res){
+    Venue.findById(req.params.id, function(err, venue){
+        if(!venue)
+        res.status(404).send("data is not found for deletion");
+        else
+        venue.delete().then(venue => {
+            res.json("venue deleted")
+        })
+        .catch(err => {
+            res.status(400).send("deletion not possible");
+        }) ; 
+    });
+});
 
 app.use('/venues', venueRoutes);
 
