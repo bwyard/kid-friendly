@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 
 export default class AddVenue extends Component {
-    render() {
+    
+
         constructor(props) {
             super(props);
 
             this.onChangeVenueName = this.onChangeVenueName.bind(this);
             this.onChangeVenueAddress = this.onChangeVenueAddress.bind(this);
+            this.onChangeVenueNumber = this.onChangeVenueNumber.bind(this);
+            this.onChangeVenueRating = this.onChangeVenueRating.bind(this);
     
             this.state = {
                 venue_name: '',
@@ -31,6 +34,11 @@ export default class AddVenue extends Component {
                 venue_address:e.target.value
             });
         }
+        onChangeVenueRating(e){
+            this.setState({
+                venue_rating:e.target.value
+            });
+        }
         onSubmit(e) {
             e.preventDefault();
             
@@ -49,11 +57,51 @@ export default class AddVenue extends Component {
         }
 
 
-
+        render() {
+            console.log("render");
         return (
-            <div style={{marginTop: 10}}>
-            <h3>Create New Todo</h3>
-            </div>
+           <div style={{marginTop:25}}>
+               <h3>Add New Venues!</h3>
+               <form onSubmit={this.onSubmit}>
+                   <div className="form-group">
+                       <label>Name</label>
+                       <input type="text"
+                       className="form-control"
+                       value={this.state.venue_name}
+                       onChange={this.onChangeVenueName}
+                       />
+                   </div>
+                   <div className="form-group">
+                       <label>Address</label>
+                       <input type="text"
+                       className="form-control"
+                       value={this.state.venue_address}
+                       onChange={this.onChangeVenueAddress}
+                       />
+                   </div>
+                   <div className="form-group">
+                       <label>Phone</label>
+                       <input type="tel"
+                       className="form-control"
+                       value={this.state.venue_number}
+                       onChange={this.onChangeVenueNumber}
+                       />
+                   </div>
+                   <div className="form-group">
+                       <label>Rating</label>
+                       <input type="number"
+                       min="0" max="5"
+                       className="form-control"
+                       value={this.state.venue_rating}
+                       onChange={this.onChangeVenueRating}
+                       />
+                   </div>
+                   <div className="form-group">
+                        <input type="submit" value="Add Venue" className="btn btn-primary" />
+                   </div>
+               </form>
+
+           </div>
         )
     }
 }
