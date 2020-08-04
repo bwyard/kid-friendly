@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class AddVenue extends Component {
     
@@ -10,6 +11,7 @@ export default class AddVenue extends Component {
             this.onChangeVenueAddress = this.onChangeVenueAddress.bind(this);
             this.onChangeVenueNumber = this.onChangeVenueNumber.bind(this);
             this.onChangeVenueRating = this.onChangeVenueRating.bind(this);
+            this.onSubmit=this.onSubmit.bind(this);
     
             this.state = {
                 venue_name: '',
@@ -47,6 +49,16 @@ export default class AddVenue extends Component {
             console.log(`Venue Address: ${this.state.venue_address}`);
             console.log(`Venue Phone: ${this.state.venue_number}`);
             console.log(`Venue Rating: ${this.state.venue_rating}`);
+
+            const newVenue ={
+                venue_name:this.state.venue_name,
+                venue_address:this.state.venue_address,
+                venue_number:this.state.venue_number,
+                venue_rating:this.state.venue_rating
+            };
+
+            axios.post('http://localhost:4000/venues/add', newVenue)
+                .then(res => console.log(res.data));
             
             this.setState({
                 venue_name: '',
