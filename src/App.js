@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -11,7 +11,8 @@ import AddVenue from "./components/add-venue.component";
 import FilterView from "./components/filter-view.component";
 
 
-function App() {
+class App extends Component{
+  render(){
   return (
     <Router>
         <div className="container">
@@ -39,14 +40,16 @@ function App() {
 
 
       <Route path="/" exact component={LandingPage} />
+      <Route path="/add" component={AddVenue} />
       <Route path="/view/:id" component={VenueLanding} />
       <Route path="/rate/:id" component={VenueRating} />
-      <Router path="/edit/:id" component={EditVenue} />
-      <Router path="/add" component={AddVenue} />
-      <Router path="/search" component={FilterView} />
+      <Route path="/edit/:id" component={EditVenue} />
+      
+      <Route path="/search" component={FilterView} />
       </div>
     </Router>
   );
+}
 }
 
 export default App;

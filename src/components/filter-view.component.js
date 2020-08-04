@@ -5,7 +5,7 @@ export default class Filter extends Component{
         return (
             <div>
                 <p>Welcome to Search!</p>
-                <input type="text"></input>
+                <input type="search"></input>
             </div>
         )
     }
