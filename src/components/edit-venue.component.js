@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 export default class EditVenue extends Component{
 
@@ -17,6 +18,20 @@ export default class EditVenue extends Component{
             venue_number: '',
             venue_rating: ''
         }
+    }
+    componentDidMount() {
+        axios.get('http://localhost:4000/venues/'+this.props.match.params.id)
+            .then(response => {
+                this.setState({
+                    venue_name: response.data.venue_name,
+                    venue_address: response.data.venue_address,
+                    venue_number: response.data.venue_number,
+                    venue_rating: response.data.venue_rating
+                })   
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
         onChangeVenueName(e){
             this.setState({
