@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table
+@Table(name="tb_venue")
 public class Venue extends AbstractEntity {
 
 
@@ -17,7 +17,7 @@ public class Venue extends AbstractEntity {
     private  String address;
 
     @Column
-    private Number phoneNumber;
+    private String phoneNumber;
 
     @Column
     private Number rating;
@@ -38,11 +38,11 @@ public class Venue extends AbstractEntity {
         this.address = address;
     }
 
-    public Number getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(Number phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
