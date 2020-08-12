@@ -1,6 +1,8 @@
 package com.kidfriendly.backend.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -10,17 +12,19 @@ public class Venue extends AbstractEntity {
 
 
 
-    @Column
+
     private String name;
 
-    @Column
+
     private  String address;
 
-    @Column
     private String phoneNumber;
 
-    @Column
+
     private Number rating;
+
+    @OneToMany(mappedBy = "venueId")
+    private List<VenueRating> venueRatings = new ArrayList<>();
 
     public String getName() {
         return name;

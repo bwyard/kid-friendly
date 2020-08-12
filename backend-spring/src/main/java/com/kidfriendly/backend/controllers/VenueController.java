@@ -30,7 +30,7 @@ public class VenueController {
     public Venue get(@PathVariable int id){
         return venueService.get(id);
     }
-    @DeleteMapping("/employee/{id}")
+    @DeleteMapping("/venue/{id}")
     public String delete(@PathVariable int id){
         venueService.delete(id);
 
