@@ -6,7 +6,6 @@ export default class EditVenue extends Component{
     constructor(props) {
         super(props);
 
-        this.onChangeVenueName = this.onChangeVenueName.bind(this);
         this.onChangeVenueAddress = this.onChangeVenueAddress.bind(this);
         this.onChangeVenueNumber = this.onChangeVenueNumber.bind(this);
         this.onChangeVenueRating = this.onChangeVenueRating.bind(this);
@@ -33,7 +32,7 @@ export default class EditVenue extends Component{
                 console.log(error);
             })
     }
-        onChangeVenueName(e){
+       onChangeVenueName = (e) => {
             this.setState({
                 venue_name:e.target.value
             });

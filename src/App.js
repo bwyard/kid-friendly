@@ -9,6 +9,7 @@ import VenueRating from "./components/venue-rating.component";
 import EditVenue from "./components/edit-venue.component";
 import AddVenue from "./components/add-venue.component";
 import FilterView from "./components/filter-view.component";
+import ReviewRating from "./components/review-rating.component";
 
 
 class App extends Component{
@@ -44,6 +45,7 @@ class App extends Component{
       <Route path="/view/:id" component={VenueLanding} />
       <Route path="/rate/:id" component={VenueRating} />
       <Route path="/edit/:id" component={EditVenue} />
+      <Route path="/rate/:id/review/:rateId" component={ReviewRating} />
       
       <Route path="/search" component={FilterView} />
       </div>

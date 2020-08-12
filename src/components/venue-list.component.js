@@ -32,9 +32,10 @@ export default class VenueList extends Component{
     }
 
     venueList(){
-        return this.state.venues.map(function(currentVenue, i){
+       if(this.state.venues.length){ return this.state.venues.map(function(currentVenue, i){
             return <Venue venue={currentVenue} key={i} />;
         })
+    } else return <div> loading</div>
     }
     render(){
         return (

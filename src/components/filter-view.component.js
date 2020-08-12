@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import VenueList from './venue-list.component'
 
 export default class Filter extends Component{
     render(){
@@ -6,6 +7,8 @@ export default class Filter extends Component{
             <div>
                 <p>Welcome to Search!</p>
                 <input type="search"></input>
+                <VenueList searchString={filterString}/>
+
             </div>
         )
     }

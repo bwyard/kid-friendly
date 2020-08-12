@@ -26,9 +26,9 @@ export default class LandingPage extends Component{
             
             <div className="container">
                 <h1>Kid Friendly Landing page</h1>
-                <Suspense fallback={<div>loading....</div>}>
+                
                     <VenueList />
-                </Suspense>
+                
             </div>
         )
     }
