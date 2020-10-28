@@ -30,14 +30,16 @@ public class VenueController {
     public Venue get(@PathVariable int id){
         return venueService.get(id);
     }
+
     @DeleteMapping("/venue/{id}")
     public String delete(@PathVariable int id){
         venueService.delete(id);
 
         return "Venue removed with id " + id;
     }
-    @PutMapping("/venue")
-    public Venue update(@RequestBody Venue venue){
+    @PutMapping("/venue/update/{id}")
+    public Venue update(@RequestBody Venue venue, @PathVariable int id){
+
         venueService.save(venue);
         return venue;
     }

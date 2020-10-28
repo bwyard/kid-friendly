@@ -14,57 +14,57 @@ export default class AddVenue extends Component {
             this.onSubmit=this.onSubmit.bind(this);
     
             this.state = {
-                venue_name: '',
-                venue_address: '',
-                venue_number: '',
-                venue_rating: ''
+                name: '',
+                address: '',
+                number: '',
+                rating: ''
             }
         }
 
         onChangeVenueName(e){
             this.setState({
-                venue_name:e.target.value
+                name:e.target.value
             });
         }
         onChangeVenueNumber(e){
             this.setState({
-                venue_number:e.target.value
+                number:e.target.value
             });
         }
         onChangeVenueAddress(e){
             this.setState({
-                venue_address:e.target.value
+                address:e.target.value
             });
         }
         onChangeVenueRating(e){
             this.setState({
-                venue_rating:e.target.value
+                rating:e.target.value
             });
         }
         onSubmit(e) {
             e.preventDefault();
             
             console.log(`Form submitted:`);
-            console.log(`Venue Name: ${this.state.venue_name}`);
-            console.log(`Venue Address: ${this.state.venue_address}`);
-            console.log(`Venue Phone: ${this.state.venue_number}`);
-            console.log(`Venue Rating: ${this.state.venue_rating}`);
+            console.log(`Venue Name: ${this.state.name}`);
+            console.log(`Venue Address: ${this.state.address}`);
+            console.log(`Venue Phone: ${this.state.number}`);
+            console.log(`Venue Rating: ${this.state.rating}`);
 
             const newVenue ={
-                venue_name:this.state.venue_name,
-                venue_address:this.state.venue_address,
-                venue_number:this.state.venue_number,
-                venue_rating:this.state.venue_rating
+                name:this.state.name,
+                address:this.state.address,
+                number:this.state.number,
+                rating:this.state.rating
             };
 
-            axios.post('http://localhost:4000/venues/add', newVenue)
+            axios.post('http://localhost:8080/api/venue', newVenue)
                 .then(res => console.log(res.data));
             
             this.setState({
-                venue_name: '',
-                venue_address: '',
-                venue_number: '',
-                venue_rating: ''
+                name: '',
+                address: '',
+                number: '',
+                rating: ''
             })
         }
 
@@ -79,7 +79,7 @@ export default class AddVenue extends Component {
                        <label>Name</label>
                        <input type="text"
                        className="form-control"
-                       value={this.state.venue_name}
+                       value={this.state.name}
                        onChange={this.onChangeVenueName}
                        />
                    </div>
@@ -87,7 +87,7 @@ export default class AddVenue extends Component {
                        <label>Address</label>
                        <input type="text"
                        className="form-control"
-                       value={this.state.venue_address}
+                       value={this.state.address}
                        onChange={this.onChangeVenueAddress}
                        />
                    </div>
@@ -95,7 +95,7 @@ export default class AddVenue extends Component {
                        <label>Phone</label>
                        <input type="tel"
                        className="form-control"
-                       value={this.state.venue_number}
+                       value={this.state.number}
                        onChange={this.onChangeVenueNumber}
                        />
                    </div>
@@ -104,7 +104,7 @@ export default class AddVenue extends Component {
                        <input type="number"
                        min="0" max="5"
                        className="form-control"
-                       value={this.state.venue_rating}
+                       value={this.state.rating}
                        onChange={this.onChangeVenueRating}
                        />
                    </div>

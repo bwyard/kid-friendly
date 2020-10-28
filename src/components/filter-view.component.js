@@ -7,7 +7,7 @@ export default class Filter extends Component{
             <div>
                 <p>Welcome to Search!</p>
                 <input type="search"></input>
-                <VenueList searchString={filterString}/>
+                <VenueList/>
 
             </div>
         )

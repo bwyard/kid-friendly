@@ -9,7 +9,7 @@ const VenueLanding = (props) => {
 
     useEffect(() =>{
     
-    axios.get('http://localhost:4000/venues/'+props.match.params.id)
+    axios.get('http://localhost:8080/api/venue/'+props.match.params.id)
             .then(response => {
                 setVenue(response.data)
             })
@@ -24,17 +24,17 @@ const VenueLanding = (props) => {
         <div className="container">
             <p>Welcome to view venue Component!</p>
             <div style={{marginTop:25}}>
-           <h3>{venue.venue_name}</h3>
+           <h3>{venue.name}</h3>
                
                
                    <label>Address</label>
-                   {venue.venue_address}
+                   {venue.address}
               
                    <label>Phone</label>
-                    {venue.venue_number}
+                    {venue.number}
                
                    <label>Rating</label>
-                   {venue.venue_rating}
+                   {venue.rating}
                
            
 

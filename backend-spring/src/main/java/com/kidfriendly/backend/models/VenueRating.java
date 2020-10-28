@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name="tb_venue_ratings")
 public class VenueRating extends AbstractEntity  {
 
-    @ManyToOne
+
     private int venueId;
 
     private String name;

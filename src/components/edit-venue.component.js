@@ -12,20 +12,20 @@ export default class EditVenue extends Component{
         this.onSubmit=this.onSubmit.bind(this);
 
         this.state = {
-            venue_name: '',
-            venue_address: '',
-            venue_number: '',
-            venue_rating: ''
+            name: '',
+            address: '',
+            number: '',
+            rating: ''
         }
     }
     componentDidMount() {
-        axios.get('http://localhost:4000/venues/'+this.props.match.params.id)
+        axios.get('http://localhost:8080/api/venue/'+this.props.match.params.id)
             .then(response => {
                 this.setState({
-                    venue_name: response.data.venue_name,
-                    venue_address: response.data.venue_address,
-                    venue_number: response.data.venue_number,
-                    venue_rating: response.data.venue_rating
+                    name: response.data.name,
+                    address: response.data.address,
+                    number: response.data.number,
+                    rating: response.data.rating
                 })   
             })
             .catch(function (error) {
@@ -34,48 +34,48 @@ export default class EditVenue extends Component{
     }
        onChangeVenueName = (e) => {
             this.setState({
-                venue_name:e.target.value
+                name:e.target.value
             });
         }
         onChangeVenueNumber(e){
             this.setState({
-                venue_number:e.target.value
+                number:e.target.value
             });
         }
         onChangeVenueAddress(e){
             this.setState({
-                venue_address:e.target.value
+                address:e.target.value
             });
         }
         onChangeVenueRating(e){
             this.setState({
-                venue_rating:e.target.value
+                rating:e.target.value
             });
         }
         onSubmit(e) {
             e.preventDefault();
             
             console.log(`Form submitted:`);
-            console.log(`Venue Name: ${this.state.venue_name}`);
-            console.log(`Venue Address: ${this.state.venue_address}`);
-            console.log(`Venue Phone: ${this.state.venue_number}`);
-            console.log(`Venue Rating: ${this.state.venue_rating}`);
+            console.log(`Venue Name: ${this.state.name}`);
+            console.log(`Venue Address: ${this.state.address}`);
+            console.log(`Venue Phone: ${this.state.number}`);
+            console.log(`Venue Rating: ${this.state.rating}`);
 
             const newVenue ={
-                venue_name:this.state.venue_name,
-                venue_address:this.state.venue_address,
-                venue_number:this.state.venue_number,
-                venue_rating:this.state.venue_rating
+                name:this.state.name,
+                address:this.state.address,
+                number:this.state.number,
+                rating:this.state.rating
             };
 
-            axios.post('http://localhost:4000/venues/update'+ this.props.match.params.id, newVenue)
+            axios.post('http://localhost:8080/venue'+ this.props.match.params.id, newVenue)
                 .then(res => console.log(res.data));
             
             this.setState({
-                venue_name: '',
-                venue_address: '',
-                venue_number: '',
-                venue_rating: ''
+                name: '',
+                address: '',
+                number: '',
+                rating: ''
             })
         }
 
@@ -84,13 +84,13 @@ export default class EditVenue extends Component{
             <div className="container">
                 <p>Welcome to Edit venue Component!</p>
                 <div style={{marginTop:25}}>
-               <h3>Add New Venues!</h3>
+               <h3>Edit Venue {this.state.name}</h3>
                <form onSubmit={this.onSubmit}>
                    <div className="form-group">
                        <label>Name</label>
                        <input type="text"
                        className="form-control"
-                       value={this.state.venue_name}
+                       value={this.state.name}
                        onChange={this.onChangeVenueName}
                        />
                    </div>
@@ -98,7 +98,7 @@ export default class EditVenue extends Component{
                        <label>Address</label>
                        <input type="text"
                        className="form-control"
-                       value={this.state.venue_address}
+                       value={this.state.address}
                        onChange={this.onChangeVenueAddress}
                        />
                    </div>
@@ -106,7 +106,7 @@ export default class EditVenue extends Component{
                        <label>Phone</label>
                        <input type="tel"
                        className="form-control"
-                       value={this.state.venue_number}
+                       value={this.state.number}
                        onChange={this.onChangeVenueNumber}
                        />
                    </div>
@@ -115,12 +115,12 @@ export default class EditVenue extends Component{
                        <input type="number"
                        min="0" max="5"
                        className="form-control"
-                       value={this.state.venue_rating}
+                       value={this.state.rating}
                        onChange={this.onChangeVenueRating}
                        />
                    </div>
                    <div className="form-group">
-                        <input type="submit" value="Add Venue" className="btn btn-primary" />
+                        <input type="submit" value="Edit Venue" className="btn btn-primary" />
                    </div>
                </form>
 

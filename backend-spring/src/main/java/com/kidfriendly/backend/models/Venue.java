@@ -23,8 +23,8 @@ public class Venue extends AbstractEntity {
 
     private Number rating;
 
-    @OneToMany(mappedBy = "venueId")
-    private List<VenueRating> venueRatings = new ArrayList<>();
+
+    //private List<VenueRating> venueRatings = new ArrayList<>();
 
     public String getName() {
         return name;

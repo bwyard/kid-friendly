@@ -6,11 +6,11 @@ import axios from 'axios';
 const Venue = props =>(
     <tr>
         <td>
-            <Link to={"view/"+props.venue._id}>{props.venue.venue_name}</Link>
+            <Link to={"view/"+props.venue.id}>{props.venue.name}</Link>
         </td>
-        <td>{props.venue.venue_address}</td>
-        <td>{props.venue.venue_number}</td>
-        <td>{props.venue.venue_rating}</td>
+        <td>{props.venue.address}</td>
+        <td>{props.venue.number}</td>
+        <td>{props.venue.rating}</td>
     </tr>
 )
 
@@ -22,11 +22,13 @@ export default class VenueList extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:4000/venues')
-            .then(response => {
+        axios.get('http://localhost:8080/api/venue')
+            .then((response) => {
+                
                 this.setState({venues: response.data });
             })
             .catch(function (error){
+                console.log("im here")
                 console.log(error);
             })
     }
@@ -35,7 +37,7 @@ export default class VenueList extends Component{
        if(this.state.venues.length){ return this.state.venues.map(function(currentVenue, i){
             return <Venue venue={currentVenue} key={i} />;
         })
-    } else return <div> loading</div>
+    } else return <tr><td>loading</td></tr>
     }
     render(){
         return (
